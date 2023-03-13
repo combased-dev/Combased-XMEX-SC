@@ -18,7 +18,6 @@ elrond_wasm_node::wasm_endpoints! {
         getRewardPerAddress
         getTokenId
         getWhiteListedAddresses
-        set_xmex_per_address
     )
 }
 

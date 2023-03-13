@@ -7,8 +7,15 @@ ADDRESS=$(mxpy data load --key=address-testnet)
 DEPLOY_GAS_LIMIT=450000000
 
 ######################################################################
+TOKEN_ID="XMEX-fda355"
+TOKEN_ID_HEX="0x$(echo -n ${TOKEN_ID} | xxd -p -u | tr -d '\n')"
+
+TOKEN_NONCE="2e"
+TOKEN_NONCE_HEX="0x${TOKEN_NONCE}"
+
 deploy() {
     mxpy --verbose contract deploy  --project=${PROJECT} --recall-nonce --pem=${WALLET} --send --proxy=${PROXY} --chain=${CHAIN_ID} \
+    --arguments ${TOKEN_ID_HEX} ${TOKEN_NONCE_HEX} \
     --outfile="deploy-testnet.interaction.json" \
     --gas-limit=${DEPLOY_GAS_LIMIT}
 

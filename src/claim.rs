@@ -73,17 +73,6 @@ pub trait Claim {
         }
     }
 
-    /*
-    Called every 2 weeks per owner to set the amount per address;
-    */
-    #[only_owner]
-    #[endpoint]
-    fn set_xmex_per_address(&self, amount: BigUint, address: ManagedAddress ) {
-        self.reward_per_address(&address).set(&amount);
-        self.is_reward_claimed(&address).set(false);
-    }
-
-
     #[only_owner]
     #[endpoint]
     fn change_token_id(&self, tokenid: EgldOrEsdtTokenIdentifier) {
